@@ -1,0 +1,25 @@
+Package: s3memoize
+Title: Simple, persistent caching for R
+Version: 0.2.0
+Author: Peter Hurford <peter@peterhurford.com>
+Maintainer: Peter Hurford <peter@peterhurford.com>
+Authors@R: "Peter Hurford <peter@peterhurford.com> [aut, cre]"
+Description: S3MPI + Memoise = S3Memoize (with a Z). Simple, persistent caching
+    in R.
+Depends:
+    R (>= 3.0.1)
+Imports:
+    memoise,
+    digest,
+    checkr
+Suggests:
+    testthat,
+    knitr,
+    microbenchmark,
+    s3mpi
+Remotes:
+  robertzk/s3mpi,
+  peterhurford/checkr
+License: MIT + file LICENSE
+LazyData: true
+RoxygenNote: 5.0.1.9000
