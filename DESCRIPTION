@@ -1,6 +1,6 @@
 Package: s3memoize
 Title: Simple, persistent caching for R
-Version: 0.2.0
+Version: 0.2.1
 Author: Peter Hurford <peter@peterhurford.com>
 Maintainer: Peter Hurford <peter@peterhurford.com>
 Authors@R: "Peter Hurford <peter@peterhurford.com> [aut, cre]"
