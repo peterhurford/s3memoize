@@ -3,10 +3,7 @@
 #' @param ... Arguments passed to the function that the digest is for.
 #' @import checkr
 #' @export
-get_s3path <- checkr::ensure(
-  pre = fn %is% "function",
-  post = result %is% simple_string,
-  function(fn, ...) {
+get_s3path <- function(fn, ...) {
     if (is.s3memoized(fn)) {
       fn <- s3memoize::get_before_fn(fn)
       warning("fn is s3memoized.  Extracting path from the before_fn instead.")
@@ -14,7 +11,7 @@ get_s3path <- checkr::ensure(
     fn_digest <- list(digest::digest(list(as.character(formals(fn)), as.character(body(fn)))))
     args_digest <- digest::digest(list(fn_digest, list(...)))
     paste0("s3memoize/", args_digest)
-  })
+  }
 
 
 #' A helper method to determine if a function is already s3memoized.

@@ -1,4 +1,4 @@
-context('s3memoize')
+context("s3memoize")
 require(microbenchmark)
 
 expensive_fn <- function(x) { Sys.sleep(0.1); x }
@@ -60,7 +60,7 @@ test_with_s3_stub("it can s3memoize a three argument function", {
 
 test_with_s3_stub("it can s3memoize a splat function", {
   s3memoized_paste0 <- s3memoize(paste0)
-  expect_equal(s3memoized_paste0('a', 'b', 'c', 'd', 'e', s3memoize.verbose = FALSE), 'abcde')
+  expect_equal(s3memoized_paste0("a", "b", "c", "d", "e", s3memoize.verbose = FALSE), "abcde")
 })
 
 test_with_s3_stub("it can s3memoize a function with a default and a non-default parameter", {
@@ -88,17 +88,22 @@ test_with_s3_stub("keys that are not written to do not exist in s3", {
 
 test_with_s3_stub("precompiling the arguments is the same as putting the arguments in directly", {
   precompiled_args <- c(1, 2, 3)
-  expect_equal(get_s3path(identity, list(precompiled_args)), get_s3path(identity, list(c(1, 2, 3))))
+  expect_equal(get_s3path(identity, list(precompiled_args)),
+    get_s3path(identity, list(c(1, 2, 3))))
 })
 
-test_with_s3_stub("identical functions are s3memoized the same, regardless of whether they are named differently I", {
-  identity_by_any_other_name_would_smell_as_sweet <- identity
-  expect_equal(get_s3path(identity, 2), get_s3path(identity_by_any_other_name_would_smell_as_sweet, 2))
+test_with_s3_stub("identical functions are s3memoized the same, regardless
+  of whether they are named differently I", {
+    identity_by_any_other_name_would_smell_as_sweet <- identity
+    expect_equal(get_s3path(identity, 2),
+      get_s3path(identity_by_any_other_name_would_smell_as_sweet, 2))
 })
 
-test_with_s3_stub("identical functions are s3memoized the same, regardless of whether they are named differently II", {
-  identity_by_any_other_name_would_smell_as_sweet <- function(x) x
-  expect_equal(get_s3path(identity, 5), get_s3path(identity_by_any_other_name_would_smell_as_sweet, 5))
+test_with_s3_stub("identical functions are s3memoized the same, regardless of
+  whether they are named differently II", {
+    identity_by_any_other_name_would_smell_as_sweet <- function(x) x
+    expect_equal(get_s3path(identity, 5),
+      get_s3path(identity_by_any_other_name_would_smell_as_sweet, 5))
 })
 
 test_with_s3_stub("the path is the same if done twice I", {

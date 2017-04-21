@@ -1,3 +1,7 @@
+#### 0.2.1
+
+* Fixed a bug with checkr.
+
 # 0.2.0
 
 * Fixed the function serialization to not depend on the environment outside the function.
